@@ -1,0 +1,30 @@
+{
+  "label": "// coursework.catalog",
+  "title": "Relevant Coursework",
+  "courses": [
+    {
+      "code": "CS 201",
+      "name": "Data Structures & Algorithms",
+      "topics": ["Trees", "Graphs", "Dynamic Programming"],
+      "grade": "A"
+    },
+    {
+      "code": "CS 301",
+      "name": "Operating Systems",
+      "topics": ["Processes", "Memory", "Concurrency"],
+      "grade": "A-"
+    },
+    {
+      "code": "CS 401",
+      "name": "Machine Learning",
+      "topics": ["Neural Networks", "NLP", "Computer Vision"],
+      "grade": "A"
+    },
+    {
+      "code": "CS 350",
+      "name": "Database Systems",
+      "topics": ["SQL", "Indexing", "Transactions"],
+      "grade": "A"
+    }
+  ]
+}

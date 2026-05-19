@@ -1,0 +1,19 @@
+{
+  "label": "// education.timeline",
+  "title": "Education",
+  "subtitle": "Academic foundation and milestones.",
+  "entries": [
+    {
+      "institution": "University Name",
+      "degree": "B.S. Computer Science",
+      "period": "2022 – 2026",
+      "location": "City, Country",
+      "gpa": "3.8/4.0",
+      "highlights": [
+        "Dean's List",
+        "Relevant club or honor",
+        "Coursework in algorithms, systems, and ML"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Your Name",
+  "initials": "UK",
+  "role": "Full-Stack Engineer",
+  "availability": {
+    "status": "Available for work",
+    "detail": "Open to opportunities"
+  },
+  "footer": {
+    "copyright": "© 2026 · Built with React + Three.js + Tailwind",
+    "tagline": "Designed to dominate."
+  }
+}

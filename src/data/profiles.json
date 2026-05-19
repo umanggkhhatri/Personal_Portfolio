@@ -1,0 +1,35 @@
+{
+  "label": "// coding_profiles.config",
+  "title": "Coding Profiles",
+  "subtitle": "Where I build, compete, and contribute.",
+  "platforms": [
+    {
+      "name": "GitHub",
+      "username": "yourhandle",
+      "url": "https://github.com/yourhandle",
+      "icon": "GH",
+      "description": "Open-source projects & contributions"
+    },
+    {
+      "name": "LeetCode",
+      "username": "yourhandle",
+      "url": "https://leetcode.com/yourhandle",
+      "icon": "LC",
+      "description": "Problem solving & contests"
+    },
+    {
+      "name": "Codeforces",
+      "username": "yourhandle",
+      "url": "https://codeforces.com/profile/yourhandle",
+      "icon": "CF",
+      "description": "Competitive programming"
+    },
+    {
+      "name": "HackerRank",
+      "username": "yourhandle",
+      "url": "https://www.hackerrank.com/yourhandle",
+      "icon": "HR",
+      "description": "Skills assessments & challenges"
+    }
+  ]
+}

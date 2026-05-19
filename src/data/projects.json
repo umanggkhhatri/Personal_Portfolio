@@ -1,0 +1,89 @@
+{
+  "label": "// projects.showcase",
+  "title": ["Selected", "Works"],
+  "subtitle": "Engineered systems at the intersection of performance and intelligence.",
+  "projects": [
+    {
+      "id": "neural-agent",
+      "label": "01 / AI_AUTOMATION",
+      "title": "Social Intelligence Framework",
+      "badge": { "text": "Production ●", "variant": "cyan" },
+      "type": "terminal",
+      "gridColumn": 7,
+      "gridRow": 2,
+      "terminal": {
+        "filename": "neural_agent.sh",
+        "status": "LIVE",
+        "lines": [
+          { "prefix": "$", "text": "neural_agent --init social_graph", "color": "#00f5ff" },
+          { "prefix": ">", "text": "Loading BERT-base-multilingual...", "color": "#7b8fff" },
+          { "prefix": ">", "text": "Connecting to platform APIs: 4/4", "color": "#7b8fff" },
+          { "prefix": "✓", "text": "Sentiment pipeline active", "color": "#00ff88" },
+          { "prefix": "✓", "text": "Content scheduler armed (2.4k posts/day)", "color": "#00ff88" },
+          { "prefix": "~", "text": "Engagement rate: +340% ↑", "color": "#bf5fff" }
+        ],
+        "stats": [
+          { "value": "2.4k", "label": "posts/day" },
+          { "value": "99.2%", "label": "uptime" },
+          { "value": "340%", "label": "eng. lift" }
+        ]
+      },
+      "links": { "demo": "", "repo": "" }
+    },
+    {
+      "id": "localrag",
+      "label": "featured_project",
+      "title": ["LocalRAG", "Intelligence Engine"],
+      "type": "featured",
+      "gridColumn": 5,
+      "gridRow": 2,
+      "icon": "🧠",
+      "description": "On-device Retrieval-Augmented Generation pipeline with quantized LLM inference. Zero-latency PDF indexing via HNSW vector search + C++ backend.",
+      "tags": ["C++", "Python", "GGUF", "HNSW", "React"],
+      "links": { "demo": "", "repo": "" }
+    },
+    {
+      "id": "mediflow",
+      "label": "02 / HEALTHCARE_UI",
+      "title": "MediFlow Dashboard",
+      "badge": { "text": "Live Demo", "variant": "violet" },
+      "type": "glass",
+      "gridColumn": 5,
+      "gridRow": 1,
+      "glass": {
+        "icon": "⚕",
+        "name": "MediFlow",
+        "subtitle": "Healthcare Platform",
+        "tabs": ["Patients", "Records", "Analytics"],
+        "metrics": [
+          { "label": "Active Patients", "value": "1,284", "trend": "+12", "color": "#00f5ff" },
+          { "label": "Appointments", "value": "48", "trend": "+5", "color": "#bf5fff" },
+          { "label": "Alerts", "value": "3", "trend": "-2", "color": "#00ff88" }
+        ],
+        "chartLabel": "Patient Vitals — Realtime"
+      },
+      "links": { "demo": "", "repo": "" }
+    },
+    {
+      "id": "algo-exec",
+      "label": "03 / ALGO_EXECUTION",
+      "title": "AlgoExec Engine",
+      "badge": { "text": "847ns latency", "variant": "green" },
+      "type": "cpp",
+      "gridColumn": 7,
+      "gridRow": 1,
+      "cpp": {
+        "filename": "algo_exec.cpp",
+        "language": "C++23",
+        "latency": "847ns",
+        "code": "// AlgoExec Engine v2.4 — HFT Core\n#include <execution_engine.hpp>\n#include <order_book.hpp>\n\ntemplate<typename Strategy>\nclass AlgoExecutor {\n  OrderBook<FIFO> book_;\n  \n  auto execute(Signal&& sig) noexcept {\n    auto [bid, ask] = book_.top_of_book();\n    if (sig.alpha > threshold_) [[likely]]\n      return book_.submit(\n        Order{sig.side, sig.qty, ask});\n  }\n};\n\n// Latency: 847ns avg | P99: 1.2μs",
+        "stats": [
+          { "value": "847ns", "label": "avg latency" },
+          { "value": "1.2μs", "label": "P99" },
+          { "value": "12M+", "label": "ops/sec" }
+        ]
+      },
+      "links": { "demo": "", "repo": "" }
+    }
+  ]
+}

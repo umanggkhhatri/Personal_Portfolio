@@ -1,0 +1,23 @@
+{
+  "label": "// tech_stack.config",
+  "title": "Skills & Coursework",
+  "subtitle": "const stack = { frontend, backend, ai, systems };",
+  "items": [
+    { "name": "React", "icon": "⚛", "color": "#61dafb" },
+    { "name": "TypeScript", "icon": "TS", "color": "#3178c6" },
+    { "name": "Next.js", "icon": "▲", "color": "#e8eaed" },
+    { "name": "Tailwind CSS", "icon": "🎨", "color": "#38bdf8" },
+    { "name": "Node.js", "icon": "⬢", "color": "#68a063" },
+    { "name": "Python", "icon": "🐍", "color": "#ffd43b" },
+    { "name": "Firebase", "icon": "🔥", "color": "#ff9800" },
+    { "name": "PostgreSQL", "icon": "🐘", "color": "#336791" },
+    { "name": "C++", "icon": "⚙", "color": "#00599c" },
+    { "name": "Docker", "icon": "🐳", "color": "#2496ed" },
+    { "name": "GraphQL", "icon": "◆", "color": "#e535ab" },
+    { "name": "Redis", "icon": "●", "color": "#dc382d" },
+    { "name": "Rust", "icon": "🦀", "color": "#f74c00" },
+    { "name": "Three.js", "icon": "△", "color": "#00f5ff" },
+    { "name": "LangChain", "icon": "⛓", "color": "#bf5fff" },
+    { "name": "AWS", "icon": "☁", "color": "#ff9900" }
+  ]
+}

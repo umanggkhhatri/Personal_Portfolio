@@ -1,0 +1,33 @@
+{
+  "headline": ["Full-Stack", "Engineering", "& AI Automation."],
+  "taglines": [
+    "high-performance architectures",
+    "AI-driven automation systems",
+    "real-time data pipelines",
+    "intelligent full-stack products"
+  ],
+  "about": {
+    "label": "// about_me.json",
+    "title": ["Architecting the", "impossible."],
+    "bio": [
+      "I engineer systems at the boundary of performance and intelligence — from sub-millisecond C++ execution engines to production-grade AI agents that scale to millions of users.",
+      "Every line of code is intentional. Every architecture decision is principled. I build software that doesn't just work — it dominates."
+    ]
+  },
+  "stats": [
+    { "value": "4+", "label": "Years exp." },
+    { "value": "20+", "label": "Projects shipped" },
+    { "value": "99.9%", "label": "Uptime avg." }
+  ],
+  "specs": [
+    { "key": "specialization", "value": "Full-Stack · AI · Systems" },
+    { "key": "primary_langs", "value": "TypeScript, Python, C++" },
+    { "key": "domains", "value": "Web, HFT, Healthcare, AI" },
+    { "key": "architecture", "value": "Microservices, Event-driven" },
+    { "key": "status", "value": "Open to Work ✓" }
+  ],
+  "ctas": [
+    { "label": "View My Work", "href": "#projects", "primary": true },
+    { "label": "Let's Talk", "href": "#contact", "primary": false }
+  ]
+}

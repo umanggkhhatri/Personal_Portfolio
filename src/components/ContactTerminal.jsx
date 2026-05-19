@@ -1,10 +1,5 @@
-import { useState, useRef } from 'react'
-
-const FIELDS = [
-  { id: 'name', label: 'name', placeholder: 'your_name' },
-  { id: 'email', label: 'email', placeholder: 'your@email.dev' },
-  { id: 'project', label: 'project_type', placeholder: 'web_app | ai_automation | systems' },
-]
+import { useState } from 'react'
+import contact from '../data/contact.json'
 
 export default function ContactTerminal() {
   const [values, setValues] = useState({ name: '', email: '', project: '', message: '' })
@@ -36,24 +31,29 @@ export default function ContactTerminal() {
   return (
     <section id="contact" className="relative py-32 px-6 md:px-16">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="mb-16 text-center">
-          <p className="section-label mb-4">// establish_connection</p>
+          <p className="section-label mb-4">{contact.label}</p>
           <h2 className="font-brutal text-5xl md:text-6xl font-bold text-white">
-            Let's{' '}
-            <span className="gradient-text">Build</span>
+            {contact.headline[0]}{' '}
+            <span className="gradient-text">{contact.headline[1]}</span>
           </h2>
-          <p className="font-mono text-sm text-white/30 mt-4">
-            Open to high-impact roles & collaboration opportunities.
-          </p>
+          <p className="font-mono text-sm text-white/30 mt-4">{contact.subtitle}</p>
+          <a
+            href={`mailto:${contact.email}`}
+            className="inline-block mt-4 font-mono text-sm text-cyan-glow hover:text-white/80 transition-colors"
+          >
+            {contact.email}
+          </a>
         </div>
 
-        {/* Frosted terminal window */}
-        <div className="glass-strong rounded-2xl overflow-hidden"
-          style={{ border: '1px solid rgba(0,245,255,0.1)' }}>
-          {/* Title bar */}
-          <div className="flex items-center gap-3 px-6 py-4 border-b border-white/5"
-            style={{ background: 'rgba(0,245,255,0.03)' }}>
+        <div
+          className="glass-strong rounded-2xl overflow-hidden"
+          style={{ border: '1px solid rgba(0,245,255,0.1)' }}
+        >
+          <div
+            className="flex items-center gap-3 px-6 py-4 border-b border-white/5"
+            style={{ background: 'rgba(0,245,255,0.03)' }}
+          >
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500/70" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
@@ -68,7 +68,6 @@ export default function ContactTerminal() {
             </div>
           </div>
 
-          {/* Log output */}
           <div className="px-6 py-4 border-b border-white/5 font-mono text-xs">
             {lines.map((line, i) => (
               <div key={i} style={{ color: line.color }} className="flex items-center gap-2">
@@ -78,18 +77,17 @@ export default function ContactTerminal() {
             ))}
           </div>
 
-          {/* Form */}
           {!submitted ? (
             <form onSubmit={handleSubmit} className="p-8 flex flex-col gap-5">
               <div className="grid md:grid-cols-3 gap-5">
-                {FIELDS.map(field => (
+                {contact.form.fields.map(field => (
                   <div key={field.id} className="flex flex-col gap-2">
-                    <label className="font-mono text-xs text-white/30">
+                    <label className="font-mono text-xs text-white/30" htmlFor={field.id}>
                       <span className="text-cyan-glow">$</span> {field.label}
                     </label>
                     <input
                       id={field.id}
-                      type="text"
+                      type={field.id === 'email' ? 'email' : 'text'}
                       placeholder={field.placeholder}
                       value={values[field.id]}
                       onChange={e => setValues(v => ({ ...v, [field.id]: e.target.value }))}
@@ -98,8 +96,10 @@ export default function ContactTerminal() {
                       className="w-full bg-transparent font-mono text-sm text-white/80 outline-none py-3 px-4 rounded-lg transition-all duration-200"
                       style={{
                         border: `1px solid ${focused === field.id ? 'rgba(0,245,255,0.4)' : 'rgba(255,255,255,0.06)'}`,
-                        background: focused === field.id ? 'rgba(0,245,255,0.03)' : 'rgba(255,255,255,0.02)',
-                        boxShadow: focused === field.id ? '0 0 20px rgba(0,245,255,0.08)' : 'none',
+                        background:
+                          focused === field.id ? 'rgba(0,245,255,0.03)' : 'rgba(255,255,255,0.02)',
+                        boxShadow:
+                          focused === field.id ? '0 0 20px rgba(0,245,255,0.08)' : 'none',
                       }}
                     />
                   </div>
@@ -107,12 +107,12 @@ export default function ContactTerminal() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-mono text-xs text-white/30">
+                <label className="font-mono text-xs text-white/30" htmlFor="message">
                   <span className="text-cyan-glow">$</span> message
                 </label>
                 <textarea
                   id="message"
-                  placeholder="Describe your project or opportunity..."
+                  placeholder={contact.form.messagePlaceholder}
                   rows={5}
                   value={values.message}
                   onChange={e => setValues(v => ({ ...v, message: e.target.value }))}
@@ -121,8 +121,10 @@ export default function ContactTerminal() {
                   className="w-full bg-transparent font-mono text-sm text-white/80 outline-none py-3 px-4 rounded-lg transition-all duration-200 resize-none"
                   style={{
                     border: `1px solid ${focused === 'message' ? 'rgba(0,245,255,0.4)' : 'rgba(255,255,255,0.06)'}`,
-                    background: focused === 'message' ? 'rgba(0,245,255,0.03)' : 'rgba(255,255,255,0.02)',
-                    boxShadow: focused === 'message' ? '0 0 20px rgba(0,245,255,0.08)' : 'none',
+                    background:
+                      focused === 'message' ? 'rgba(0,245,255,0.03)' : 'rgba(255,255,255,0.02)',
+                    boxShadow:
+                      focused === 'message' ? '0 0 20px rgba(0,245,255,0.08)' : 'none',
                   }}
                 />
               </div>
@@ -144,29 +146,12 @@ export default function ContactTerminal() {
           ) : (
             <div className="p-12 text-center">
               <div className="text-5xl mb-4">✓</div>
-              <h3 className="font-brutal text-2xl font-bold text-cyan-glow mb-2">Transmission Received</h3>
-              <p className="font-mono text-sm text-white/40">I'll get back to you within 24 hours.</p>
+              <h3 className="font-brutal text-2xl font-bold text-cyan-glow mb-2">
+                Transmission Received
+              </h3>
+              <p className="font-mono text-sm text-white/40">{contact.successMessage}</p>
             </div>
           )}
-        </div>
-
-        {/* Social links */}
-        <div className="flex justify-center gap-8 mt-12">
-          {[
-            { label: 'GitHub', icon: '⌥', href: '#' },
-            { label: 'LinkedIn', icon: '◈', href: '#' },
-            { label: 'Twitter', icon: '◉', href: '#' },
-            { label: 'Email', icon: '◎', href: 'mailto:hello@dev.io' },
-          ].map(link => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="flex items-center gap-2 font-mono text-sm text-white/30 hover:text-cyan-glow transition-colors duration-200"
-            >
-              <span>{link.icon}</span>
-              <span>{link.label}</span>
-            </a>
-          ))}
         </div>
       </div>
     </section>

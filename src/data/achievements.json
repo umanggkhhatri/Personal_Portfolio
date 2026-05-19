@@ -1,0 +1,27 @@
+{
+  "label": "// achievements.log",
+  "title": "Achievements",
+  "items": [
+    {
+      "title": "LeetCode Knight",
+      "issuer": "LeetCode",
+      "date": "2025",
+      "description": "Top 5% global ranking in algorithmic problem solving.",
+      "url": ""
+    },
+    {
+      "title": "Hackathon Winner",
+      "issuer": "University / Event Name",
+      "date": "2024",
+      "description": "Built an AI-powered solution in 24 hours.",
+      "url": ""
+    },
+    {
+      "title": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "date": "2024",
+      "description": "Foundational cloud architecture and services.",
+      "url": ""
+    }
+  ]
+}

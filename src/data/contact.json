@@ -1,0 +1,15 @@
+{
+  "label": "// establish_connection",
+  "headline": ["Let's", "Build"],
+  "subtitle": "Open to high-impact roles & collaboration opportunities.",
+  "email": "hello@dev.io",
+  "successMessage": "I'll get back to you within 24 hours.",
+  "form": {
+    "fields": [
+      { "id": "name", "label": "name", "placeholder": "your_name" },
+      { "id": "email", "label": "email", "placeholder": "your@email.dev" },
+      { "id": "project", "label": "project_type", "placeholder": "web_app | ai_automation | systems" }
+    ],
+    "messagePlaceholder": "Describe your project or opportunity..."
+  }
+}
