@@ -2,18 +2,14 @@ import site from '../data/site.json'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 py-10 px-8 md:px-20">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="font-mono text-xs text-white/20">
-          {site.footer.copyright} · Neumorphic-Cyber
+    <footer className="border-t border-border py-10 px-6 md:px-12 lg:px-16 bg-surface/30">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <p className="font-sans text-sm text-muted">{site.footer.copyright}</p>
+        <div className="flex items-center gap-2 font-sans text-sm">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-emerald-600 dark:text-emerald-400">Available for opportunities</span>
         </div>
-        <div className="flex items-center gap-2 font-mono text-xs">
-          <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-green-400/60">All systems operational</span>
-        </div>
-        <div className="font-mono text-xs text-white/20">
-          {site.footer.tagline}
-        </div>
+        <p className="font-sans text-sm text-muted">{site.footer.tagline}</p>
       </div>
     </footer>
   )

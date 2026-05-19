@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import Navbar from './components/Navbar.jsx'
-import CustomCursor from './components/CustomCursor.jsx'
 import Footer from './components/Footer.jsx'
 import HomeSection from './components/sections/HomeSection.jsx'
 import EducationSection from './components/sections/EducationSection.jsx'
@@ -21,36 +20,13 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden" style={{ background: '#040810' }}>
-      <div className="noise-overlay" />
-      <div className="grid-lines" />
-
-      <CustomCursor />
-
-      <div
-        className="fixed pointer-events-none z-0"
-        style={{
-          top: '-20vh',
-          left: '-20vw',
-          width: '70vw',
-          height: '70vh',
-          background: 'radial-gradient(ellipse, rgba(0,245,255,0.04) 0%, transparent 70%)',
-        }}
-      />
-      <div
-        className="fixed pointer-events-none z-0"
-        style={{
-          bottom: '-20vh',
-          right: '-20vw',
-          width: '70vw',
-          height: '70vh',
-          background: 'radial-gradient(ellipse, rgba(191,95,255,0.04) 0%, transparent 70%)',
-        }}
-      />
+    <div className="page-shell relative overflow-x-hidden">
+      <div className="ambient-orb ambient-orb-1" aria-hidden />
+      <div className="ambient-orb ambient-orb-2" aria-hidden />
 
       <Navbar />
 
-      <main>
+      <main className="relative z-10">
         <HomeSection scrollY={scrollY} />
         <EducationSection />
         <ProfilesSection />

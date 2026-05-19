@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import site from '../data/site.json'
+import ThemeToggle from './ThemeToggle.jsx'
 
 const NAV_ITEMS = [
   { href: '#home', label: 'Home' },
@@ -12,31 +13,16 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [time, setTime] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
+    const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    const tick = () => {
-      const now = new Date()
-      setTime(now.toLocaleTimeString('en-US', { hour12: false }))
-    }
-    tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
-  }, [])
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
@@ -46,26 +32,18 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
-      style={{
-        background: scrolled ? 'rgba(8,13,26,0.85)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(24px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(0,245,255,0.06)' : '1px solid transparent',
-      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'glass-panel border-b border-border shadow-card' : 'bg-transparent'
+      }`}
     >
-      <div className="flex items-center justify-between px-6 md:px-12 py-5">
-        <a href="#home" className="flex items-center gap-3" onClick={closeMenu}>
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold font-mono"
-            style={{
-              background: 'linear-gradient(135deg, rgba(0,245,255,0.2), rgba(191,95,255,0.2))',
-              border: '1px solid rgba(0,245,255,0.3)',
-              color: '#00f5ff',
-            }}
-          >
+      <div className="flex items-center justify-between px-6 md:px-12 py-4 max-w-7xl mx-auto">
+        <a href="#home" className="flex items-center gap-3 group" onClick={closeMenu}>
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-semibold font-display bg-accent-soft text-accent border border-border group-hover:shadow-glow transition-shadow">
             {site.initials}
           </div>
-          <span className="font-mono text-xs text-white/30">/dev</span>
+          <span className="font-sans text-sm font-medium text-muted hidden sm:block">
+            {site.name}
+          </span>
         </a>
 
         <div className="hidden lg:flex items-center gap-1">
@@ -73,60 +51,22 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="font-mono text-xs px-3 py-2 rounded-lg text-white/40 hover:text-white/80 hover:bg-white/5 transition-all duration-200"
+              className="font-sans text-sm px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-accent-soft transition-all"
             >
               {item.label}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:flex lg:hidden items-center gap-4">
-          <a
-            href="#contact"
-            className="font-mono text-xs px-4 py-2 rounded-lg transition-all duration-200"
-            style={{
-              background: 'rgba(0,245,255,0.08)',
-              border: '1px solid rgba(0,245,255,0.2)',
-              color: '#00f5ff',
-            }}
-          >
-            Hire Me →
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a href="#contact" className="btn-primary text-sm py-2.5 px-5 hidden sm:inline-flex">
+            Hire Me
           </a>
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="font-mono text-xs text-white/60 px-3 py-2 rounded-lg border border-white/10"
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? '✕' : '☰'}
-          </button>
-        </div>
-
-        <div className="hidden lg:flex items-center gap-4">
-          <span className="font-mono text-xs text-white/20">{time}</span>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="font-mono text-xs text-green-400/70">available</span>
-          </div>
-          <a
-            href="#contact"
-            className="font-mono text-xs px-4 py-2 rounded-lg transition-all duration-200"
-            style={{
-              background: 'rgba(0,245,255,0.08)',
-              border: '1px solid rgba(0,245,255,0.2)',
-              color: '#00f5ff',
-            }}
-          >
-            Hire Me →
-          </a>
-        </div>
-
-        <div className="flex md:hidden items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="font-mono text-xs text-white/60 px-3 py-2 rounded-lg border border-white/10"
+            className="lg:hidden font-sans text-sm px-3 py-2 rounded-lg border border-border text-muted hover:text-foreground"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
@@ -136,31 +76,20 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div
-          className="lg:hidden border-t border-white/5 px-6 py-6"
-          style={{ background: 'rgba(8,13,26,0.95)', backdropFilter: 'blur(24px)' }}
-        >
-          <div className="flex flex-col gap-2">
+        <div className="lg:hidden glass-panel-strong border-t border-border px-6 py-6">
+          <div className="flex flex-col gap-1 max-w-7xl mx-auto">
             {NAV_ITEMS.map(item => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className="font-mono text-sm px-4 py-3 rounded-lg text-white/50 hover:text-white/90 hover:bg-white/5 transition-all"
+                className="font-sans text-base px-4 py-3 rounded-lg text-muted hover:text-foreground hover:bg-accent-soft transition-all"
               >
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={closeMenu}
-              className="font-mono text-sm px-4 py-3 rounded-lg text-cyan-glow mt-2"
-              style={{
-                background: 'rgba(0,245,255,0.08)',
-                border: '1px solid rgba(0,245,255,0.2)',
-              }}
-            >
-              Hire Me →
+            <a href="#contact" onClick={closeMenu} className="btn-primary mt-3 text-center">
+              Hire Me
             </a>
           </div>
         </div>

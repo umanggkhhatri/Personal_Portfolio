@@ -1,185 +1,173 @@
 import { useRef, useMemo } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { MeshTransmissionMaterial, Float, Environment, Stars } from '@react-three/drei'
+import {
+  MeshTransmissionMaterial,
+  Float,
+  Environment,
+  Sphere,
+  TorusKnot,
+} from '@react-three/drei'
 import * as THREE from 'three'
+import { useTheme } from '../context/ThemeContext.jsx'
 
-/* ── Inner icosahedron ── */
-function IcosahedronMesh({ scrollY }) {
+function useSceneColors() {
+  const { isDark } = useTheme()
+  return useMemo(
+    () => ({
+      primary: isDark ? '#818cf8' : '#6366f1',
+      secondary: isDark ? '#c084fc' : '#a78bfa',
+      glass: isDark ? '#1e1e2e' : '#f8fafc',
+      env: isDark ? 'night' : 'city',
+    }),
+    [isDark],
+  )
+}
+
+function IcosahedronMesh({ scrollY, colors }) {
   const meshRef = useRef()
   const wireRef = useRef()
-  const outerRef = useRef()
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime()
     const scroll = scrollY.current || 0
-
     if (meshRef.current) {
-      meshRef.current.rotation.x = t * 0.18 + scroll * 0.003
-      meshRef.current.rotation.y = t * 0.24
-      meshRef.current.rotation.z = t * 0.10
+      meshRef.current.rotation.x = t * 0.15 + scroll * 0.002
+      meshRef.current.rotation.y = t * 0.2
     }
     if (wireRef.current) {
-      wireRef.current.rotation.x = -t * 0.12 + scroll * 0.002
-      wireRef.current.rotation.y = -t * 0.18
-    }
-    if (outerRef.current) {
-      outerRef.current.rotation.x = t * 0.06
-      outerRef.current.rotation.y = t * 0.09
+      wireRef.current.rotation.x = -t * 0.1
+      wireRef.current.rotation.y = -t * 0.15
     }
   })
 
-  const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.8, 1), [])
-  const outerGeo = useMemo(() => new THREE.IcosahedronGeometry(2.6, 1), [])
+  const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.6, 1), [])
 
   return (
     <group>
-      {/* Outer transparent shell */}
-      <mesh ref={outerRef} geometry={outerGeo}>
-        <meshBasicMaterial
-          color="#00f5ff"
-          wireframe
-          transparent
-          opacity={0.06}
-        />
-      </mesh>
-
-      {/* Glassy core */}
       <mesh ref={meshRef} geometry={geometry}>
         <MeshTransmissionMaterial
           backside
-          samples={8}
-          thickness={0.4}
-          roughness={0.02}
-          transmission={0.96}
-          ior={1.5}
-          chromaticAberration={0.06}
-          distortion={0.35}
-          distortionScale={0.3}
-          temporalDistortion={0.15}
-          color="#0a1a2e"
-          attenuationColor="#00f5ff"
-          attenuationDistance={2}
+          samples={6}
+          thickness={0.35}
+          roughness={0.05}
+          transmission={0.94}
+          ior={1.45}
+          chromaticAberration={0.04}
+          color={colors.glass}
+          attenuationColor={colors.primary}
+          attenuationDistance={2.5}
         />
       </mesh>
-
-      {/* Cyan wireframe */}
       <mesh ref={wireRef} geometry={geometry}>
-        <meshBasicMaterial
-          color="#00f5ff"
-          wireframe
-          transparent
-          opacity={0.55}
-        />
+        <meshBasicMaterial color={colors.primary} wireframe transparent opacity={0.35} />
       </mesh>
-
-      {/* Vertex points glow */}
-      <points geometry={geometry}>
-        <pointsMaterial
-          color="#00f5ff"
-          size={0.07}
-          transparent
-          opacity={0.9}
-          sizeAttenuation
-        />
-      </points>
     </group>
   )
 }
 
-/* ── Floating particles ── */
-function Particles() {
-  const count = 200
+function FloatingTorus({ colors }) {
+  const ref = useRef()
+  useFrame(({ clock }) => {
+    if (ref.current) ref.current.rotation.x = clock.getElapsedTime() * 0.12
+  })
+  return (
+    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
+      <TorusKnot ref={ref} args={[0.9, 0.22, 128, 16]} position={[2.8, 0.5, -1]}>
+        <meshStandardMaterial
+          color={colors.secondary}
+          metalness={0.6}
+          roughness={0.25}
+          transparent
+          opacity={0.85}
+        />
+      </TorusKnot>
+    </Float>
+  )
+}
+
+function FloatingSpheres({ colors }) {
+  return (
+    <>
+      <Float speed={2} floatIntensity={1.2}>
+        <Sphere args={[0.35, 32, 32]} position={[-2.5, 1.2, 0]}>
+          <meshStandardMaterial color={colors.primary} metalness={0.4} roughness={0.3} />
+        </Sphere>
+      </Float>
+      <Float speed={1.6} floatIntensity={0.9}>
+        <Sphere args={[0.2, 24, 24]} position={[2, -1.5, 0.5]}>
+          <meshStandardMaterial color={colors.secondary} metalness={0.5} roughness={0.2} />
+        </Sphere>
+      </Float>
+    </>
+  )
+}
+
+function Particles({ color }) {
+  const count = 120
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
-      arr[i * 3]     = (Math.random() - 0.5) * 24
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 24
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 12
+      arr[i * 3] = (Math.random() - 0.5) * 20
+      arr[i * 3 + 1] = (Math.random() - 0.5) * 20
+      arr[i * 3 + 2] = (Math.random() - 0.5) * 10
     }
     return arr
   }, [])
 
   const ref = useRef()
   useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.rotation.y = clock.getElapsedTime() * 0.02
-    }
+    if (ref.current) ref.current.rotation.y = clock.getElapsedTime() * 0.015
   })
 
   return (
     <points ref={ref}>
       <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
-        />
+        <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial
-        color="#bf5fff"
-        size={0.04}
-        transparent
-        opacity={0.6}
-        sizeAttenuation
-      />
+      <pointsMaterial color={color} size={0.035} transparent opacity={0.5} sizeAttenuation />
     </points>
   )
 }
 
-/* ── Orbit ring ── */
-function OrbitRing() {
-  const ref = useRef()
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.rotation.z = clock.getElapsedTime() * 0.3
-    }
-  })
-
-  const geo = useMemo(() => new THREE.TorusGeometry(3.8, 0.012, 4, 80), [])
-
-  return (
-    <mesh ref={ref} geometry={geo} rotation={[Math.PI / 2.8, 0.2, 0]}>
-      <meshBasicMaterial color="#00f5ff" transparent opacity={0.35} />
-    </mesh>
-  )
-}
-
-/* ── Camera rig reacts to mouse ── */
 function CameraRig() {
   const { camera, mouse } = useThree()
   useFrame(() => {
-    camera.position.x += (mouse.x * 0.6 - camera.position.x) * 0.04
-    camera.position.y += (mouse.y * 0.3 - camera.position.y) * 0.04
+    camera.position.x += (mouse.x * 0.5 - camera.position.x) * 0.04
+    camera.position.y += (mouse.y * 0.25 - camera.position.y) * 0.04
     camera.lookAt(0, 0, 0)
   })
   return null
 }
 
+function SceneContent({ scrollY }) {
+  const colors = useSceneColors()
+  return (
+    <>
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[5, 5, 5]} intensity={1} color={colors.primary} />
+      <directionalLight position={[-5, -3, -5]} intensity={0.4} color={colors.secondary} />
+      <Particles color={colors.secondary} />
+      <FloatingSpheres colors={colors} />
+      <FloatingTorus colors={colors} />
+      <Float speed={1.8} rotationIntensity={0.25} floatIntensity={0.5}>
+        <IcosahedronMesh scrollY={scrollY} colors={colors} />
+      </Float>
+      <Environment preset={colors.env} background={false} />
+      <CameraRig />
+    </>
+  )
+}
+
 export default function HeroScene({ scrollY }) {
   return (
     <Canvas
-      camera={{ position: [0, 0, 7], fov: 50 }}
+      camera={{ position: [0, 0, 7], fov: 48 }}
       dpr={[1, 1.5]}
       frameloop="always"
-      gl={{ preserveDrawingBuffer: true, antialias: true }}
+      gl={{ preserveDrawingBuffer: true, antialias: true, alpha: true }}
       style={{ background: 'transparent' }}
     >
-      <ambientLight intensity={0.1} />
-      <pointLight position={[4, 4, 4]} intensity={1.5} color="#00f5ff" />
-      <pointLight position={[-4, -2, -4]} intensity={1} color="#bf5fff" />
-      <pointLight position={[0, -4, 2]} intensity={0.5} color="#7b8fff" />
-
-      <Stars radius={60} depth={30} count={1200} factor={3} fade speed={0.4} />
-      <Particles />
-      <OrbitRing />
-
-      <Float speed={2} rotationIntensity={0.3} floatIntensity={0.6}>
-        <IcosahedronMesh scrollY={scrollY} />
-      </Float>
-
-      <Environment preset="night" background={false} />
-      <CameraRig />
+      <SceneContent scrollY={scrollY} />
     </Canvas>
   )
 }

@@ -1,33 +1,16 @@
 import projectsData from '../data/projects.json'
 
-const BADGE_STYLES = {
-  cyan: {
-    background: 'rgba(0,245,255,0.08)',
-    border: '1px solid rgba(0,245,255,0.2)',
-    color: '#00f5ff',
-  },
-  violet: {
-    background: 'rgba(191,95,255,0.08)',
-    border: '1px solid rgba(191,95,255,0.2)',
-    color: '#bf5fff',
-  },
-  green: {
-    background: 'rgba(100,255,100,0.08)',
-    border: '1px solid rgba(100,255,100,0.2)',
-    color: '#00ff88',
-  },
+const BADGE_CLASSES = {
+  cyan: 'bg-accent-soft text-accent border border-border',
+  violet: 'bg-accent-soft text-accent-secondary border border-border',
+  green: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-border',
 }
 
 function ProjectBadge({ badge }) {
   if (!badge) return null
-  const style = BADGE_STYLES[badge.variant] || BADGE_STYLES.cyan
+  const cls = BADGE_CLASSES[badge.variant] || BADGE_CLASSES.cyan
   return (
-    <span
-      className="font-mono text-xs px-3 py-1 rounded-full"
-      style={style}
-    >
-      {badge.text}
-    </span>
+    <span className={`font-mono text-xs px-3 py-1 rounded-full ${cls}`}>{badge.text}</span>
   )
 }
 
@@ -144,7 +127,7 @@ function GlassCard({ glass }) {
 
 function CppCard({ cpp }) {
   return (
-    <div className="neumorphic-card rounded-2xl h-full overflow-hidden group" style={{ background: '#050a0f' }}>
+    <div className="surface-card rounded-2xl h-full overflow-hidden group">
       <div className="flex items-center gap-2 p-4 border-b border-white/5">
         <div className="terminal-dot bg-red-500" />
         <div className="terminal-dot bg-yellow-500" />
@@ -301,16 +284,16 @@ export default function ProjectsShowcase() {
   const { label, title, subtitle, projects } = projectsData
 
   return (
-    <section id="projects" className="relative py-32 px-6 md:px-16">
-      <div className="mb-20">
+    <section id="projects" className="relative py-28 px-6 md:px-12 lg:px-16 max-w-7xl mx-auto">
+      <div className="mb-16">
         <p className="section-label mb-4">{label}</p>
         <div className="flex items-end justify-between flex-wrap gap-4">
-          <h2 className="font-brutal text-5xl md:text-7xl font-bold leading-none">
-            <span className="text-white">{title[0]}</span>
+          <h2 className="font-display text-4xl md:text-6xl font-semibold leading-tight">
+            <span className="text-foreground">{title[0]}</span>
             <br />
             <span className="gradient-text">{title[1]}</span>
           </h2>
-          <p className="font-mono text-sm text-white/30 max-w-xs">{subtitle}</p>
+          <p className="font-sans text-base text-muted max-w-xs">{subtitle}</p>
         </div>
       </div>
 
@@ -335,8 +318,8 @@ export default function ProjectsShowcase() {
                 <div className="h-full flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <span className="section-label block mb-1">{project.label}</span>
-                      <h3 className="font-brutal text-2xl font-bold text-white">{project.title}</h3>
+                <span className="section-label block mb-1">{project.label}</span>
+                <h3 className="font-display text-2xl font-semibold text-foreground">{project.title}</h3>
                     </div>
                     <ProjectBadge badge={project.badge} />
                   </div>
