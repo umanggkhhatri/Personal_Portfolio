@@ -1,89 +1,80 @@
 {
   "label": "// projects.showcase",
   "title": ["Selected", "Works"],
-  "subtitle": "Engineered systems at the intersection of performance and intelligence.",
+  "subtitle": "Real systems built at the intersection of AI, automation, and full-stack engineering.",
   "projects": [
     {
-      "id": "neural-agent",
-      "label": "01 / AI_AUTOMATION",
-      "title": "Social Intelligence Framework",
-      "badge": { "text": "Production ●", "variant": "cyan" },
-      "type": "terminal",
-      "gridColumn": 7,
-      "gridRow": 2,
-      "terminal": {
-        "filename": "neural_agent.sh",
-        "status": "LIVE",
-        "lines": [
-          { "prefix": "$", "text": "neural_agent --init social_graph", "color": "#00f5ff" },
-          { "prefix": ">", "text": "Loading BERT-base-multilingual...", "color": "#7b8fff" },
-          { "prefix": ">", "text": "Connecting to platform APIs: 4/4", "color": "#7b8fff" },
-          { "prefix": "✓", "text": "Sentiment pipeline active", "color": "#00ff88" },
-          { "prefix": "✓", "text": "Content scheduler armed (2.4k posts/day)", "color": "#00ff88" },
-          { "prefix": "~", "text": "Engagement rate: +340% ↑", "color": "#bf5fff" }
-        ],
-        "stats": [
-          { "value": "2.4k", "label": "posts/day" },
-          { "value": "99.2%", "label": "uptime" },
-          { "value": "340%", "label": "eng. lift" }
-        ]
-      },
-      "links": { "demo": "", "repo": "" }
-    },
-    {
       "id": "localrag",
-      "label": "featured_project",
+      "label": "01 / AI_SYSTEMS",
       "title": ["LocalRAG", "Intelligence Engine"],
+      "badge": { "text": "100% Offline ●", "variant": "cyan" },
       "type": "featured",
-      "gridColumn": 5,
+      "gridColumn": 7,
       "gridRow": 2,
       "icon": "🧠",
-      "description": "On-device Retrieval-Augmented Generation pipeline with quantized LLM inference. Zero-latency PDF indexing via HNSW vector search + C++ backend.",
-      "tags": ["C++", "Python", "GGUF", "HNSW", "React"],
-      "links": { "demo": "", "repo": "" }
+      "description": "A fully local, privacy-first Retrieval-Augmented Generation system built in C++ with a React frontend. Upload PDFs, ask questions in natural language, and get AI-generated answers — all running entirely on your machine with zero data leakage.",
+      "highlight": "Hybrid Retrieval: FAISS dense + BM25 sparse with Reciprocal Rank Fusion",
+      "tags": ["C++17", "FAISS", "BM25", "llama.cpp", "React", "MuPDF", "Tesseract"],
+      "stats": [
+        { "value": "100%", "label": "offline" },
+        { "value": "0ms", "label": "API latency" },
+        { "value": "2-stage", "label": "hybrid retrieval" }
+      ],
+      "links": { "demo": "", "repo": "https://github.com/umanggkhhatri/LocalRAG" }
     },
     {
-      "id": "mediflow",
-      "label": "02 / HEALTHCARE_UI",
-      "title": "MediFlow Dashboard",
-      "badge": { "text": "Live Demo", "variant": "violet" },
-      "type": "glass",
+      "id": "droidrun-obsidians",
+      "label": "02 / AI_AUTOMATION",
+      "title": "Droidrun Obsidians",
+      "badge": { "text": "Hackathon Build", "variant": "violet" },
+      "type": "terminal",
       "gridColumn": 5,
-      "gridRow": 1,
-      "glass": {
-        "icon": "⚕",
-        "name": "MediFlow",
-        "subtitle": "Healthcare Platform",
-        "tabs": ["Patients", "Records", "Analytics"],
-        "metrics": [
-          { "label": "Active Patients", "value": "1,284", "trend": "+12", "color": "#00f5ff" },
-          { "label": "Appointments", "value": "48", "trend": "+5", "color": "#bf5fff" },
-          { "label": "Alerts", "value": "3", "trend": "-2", "color": "#00ff88" }
+      "gridRow": 2,
+      "terminal": {
+        "filename": "social_agent.py",
+        "status": "LIVE",
+        "lines": [
+          { "prefix": "$", "text": "python web/app.py --platforms all", "color": "#00f5ff" },
+          { "prefix": ">", "text": "Google Gemini content transformer: ready", "color": "#7b8fff" },
+          { "prefix": ">", "text": "DroidRun agent connected to device...", "color": "#7b8fff" },
+          { "prefix": "✓", "text": "Threads posted — 498 chars", "color": "#00ff88" },
+          { "prefix": "✓", "text": "Instagram: 20 hashtags, media attached", "color": "#00ff88" },
+          { "prefix": "✓", "text": "LinkedIn: professional tone applied", "color": "#00ff88" },
+          { "prefix": "~", "text": "4 platforms posted in 2m 34s", "color": "#bf5fff" }
         ],
-        "chartLabel": "Patient Vitals — Realtime"
-      },
-      "links": { "demo": "", "repo": "" }
-    },
-    {
-      "id": "algo-exec",
-      "label": "03 / ALGO_EXECUTION",
-      "title": "AlgoExec Engine",
-      "badge": { "text": "847ns latency", "variant": "green" },
-      "type": "cpp",
-      "gridColumn": 7,
-      "gridRow": 1,
-      "cpp": {
-        "filename": "algo_exec.cpp",
-        "language": "C++23",
-        "latency": "847ns",
-        "code": "// AlgoExec Engine v2.4 — HFT Core\n#include <execution_engine.hpp>\n#include <order_book.hpp>\n\ntemplate<typename Strategy>\nclass AlgoExecutor {\n  OrderBook<FIFO> book_;\n  \n  auto execute(Signal&& sig) noexcept {\n    auto [bid, ask] = book_.top_of_book();\n    if (sig.alpha > threshold_) [[likely]]\n      return book_.submit(\n        Order{sig.side, sig.qty, ask});\n  }\n};\n\n// Latency: 847ns avg | P99: 1.2μs",
         "stats": [
-          { "value": "847ns", "label": "avg latency" },
-          { "value": "1.2μs", "label": "P99" },
-          { "value": "12M+", "label": "ops/sec" }
+          { "value": "4", "label": "platforms" },
+          { "value": "Gemini", "label": "AI engine" },
+          { "value": "SSE", "label": "live stream" }
         ]
       },
-      "links": { "demo": "", "repo": "" }
+      "description": "AI-powered social media automation using DroidRun mobile automation. Posts to Threads, Instagram, Twitter/X, and LinkedIn with platform-specific AI content transformation via Google Gemini. Features real-time Server-Sent Events progress streaming.",
+      "tags": ["Python", "DroidRun", "Google Gemini", "Flask", "SSE", "Android"],
+      "links": { "demo": "", "repo": "https://github.com/umanggkhhatri/Droidrun_Obsidians" }
+    },
+    {
+      "id": "prashikshan",
+      "label": "03 / FULLSTACK_PLATFORM",
+      "title": "Prashikshan",
+      "badge": { "text": "NEP 2020 Aligned", "variant": "green" },
+      "type": "platform",
+      "gridColumn": 12,
+      "gridRow": 1,
+      "platform": {
+        "icon": "🎓",
+        "name": "Prashikshan",
+        "subtitle": "Academia-Industry Interface Platform",
+        "roles": ["Student", "Faculty", "Industry"],
+        "features": [
+          { "label": "Internship Discovery", "icon": "🔍", "color": "#00f5ff" },
+          { "label": "Digital Logbooks", "icon": "📋", "color": "#bf5fff" },
+          { "label": "NEP 2020 Credits", "icon": "🏆", "color": "#00ff88" },
+          { "label": "Performance Analytics", "icon": "📊", "color": "#ff9800" }
+        ]
+      },
+      "description": "A full-stack web platform bridging academic learning and industry requirements through NEP 2020-aligned internship programs. Enables internship discovery, digital logbooks, credit allocation, and performance analytics across three role-based portals.",
+      "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Firebase", "Framer Motion"],
+      "links": { "demo": "", "repo": "https://github.com/umanggkhhatri/Project-Academia-Industry-Interface-Platform-" }
     }
   ]
 }
