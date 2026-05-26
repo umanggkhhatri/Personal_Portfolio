@@ -4,15 +4,13 @@
   "subtitle": "Academic foundation and milestones.",
   "entries": [
     {
-      "institution": "University Name",
-      "degree": "B.S. Computer Science",
-      "period": "2022 – 2026",
-      "location": "City, Country",
-      "gpa": "3.8/4.0",
+      "institution": "Indian Institute of Technology (IIT) Patna",
+      "degree": "B.Tech in Artificial Intelligence and Data Science",
+      "period": "2024 – 2028",
+      "location": "Patna, India",
+      "gpa": "8.87/10.0",
       "highlights": [
-        "Dean's List",
-        "Relevant club or honor",
-        "Coursework in algorithms, systems, and ML"
+        "Google Developers' Group Manager"
       ]
     }
   ]

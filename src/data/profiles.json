@@ -5,30 +5,30 @@
   "platforms": [
     {
       "name": "GitHub",
-      "username": "yourhandle",
-      "url": "https://github.com/yourhandle",
+      "username": "umanggkhhatri",
+      "url": "https://github.com/umanggkhhatri",
       "icon": "GH",
       "description": "Open-source projects & contributions"
     },
     {
       "name": "LeetCode",
-      "username": "yourhandle",
-      "url": "https://leetcode.com/yourhandle",
+      "username": "theumangkhatri",
+      "url": "https://leetcode.com/theumangkhatri",
       "icon": "LC",
       "description": "Problem solving & contests"
     },
     {
       "name": "Codeforces",
-      "username": "yourhandle",
-      "url": "https://codeforces.com/profile/yourhandle",
+      "username": "theumangkhatri",
+      "url": "https://codeforces.com/profile/theumangkhatri",
       "icon": "CF",
       "description": "Competitive programming"
     },
     {
-      "name": "HackerRank",
-      "username": "yourhandle",
-      "url": "https://www.hackerrank.com/yourhandle",
-      "icon": "HR",
+      "name": "Codechef",
+      "username": "umangkhatri",
+      "url": "https://www.codechef.com/users/umangkhatri",
+      "icon": "CC",
       "description": "Skills assessments & challenges"
     }
   ]
