@@ -22,8 +22,14 @@ function AccentSphere({ position, scale, color }) {
 
 function AccentScene() {
   const { isDark } = useTheme()
-  const primary = isDark ? '#818cf8' : '#6366f1'
-  const secondary = isDark ? '#c084fc' : '#a78bfa'
+  // Read canonical color tokens from CSS variables so visuals match site theme
+  const rootStyles = typeof window !== 'undefined' ? getComputedStyle(document.documentElement) : null
+  const primary =
+    rootStyles?.getPropertyValue('--color-accent')?.trim() || (isDark ? '#818cf8' : '#6366f1')
+  const secondary =
+    rootStyles?.getPropertyValue('--color-accent-secondary')?.trim() || (isDark ? '#c084fc' : '#a78bfa')
+  const tertiary =
+    rootStyles?.getPropertyValue('--color-accent-muted')?.trim() || (isDark ? '#38bdf8' : '#60a5fa')
 
   return (
     <>
@@ -31,7 +37,7 @@ function AccentScene() {
       <pointLight position={[4, 4, 4]} intensity={1.2} color={primary} />
       <AccentSphere position={[-1.2, 0.4, 0]} scale={0.55} color={primary} />
       <AccentSphere position={[1.4, -0.6, -0.5]} scale={0.35} color={secondary} />
-      <AccentSphere position={[0.2, 1.1, 0.3]} scale={0.22} color={isDark ? '#38bdf8' : '#60a5fa'} />
+      <AccentSphere position={[0.2, 1.1, 0.3]} scale={0.22} color={tertiary} />
     </>
   )
 }

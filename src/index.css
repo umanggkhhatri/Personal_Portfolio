@@ -27,6 +27,18 @@
   --orb-2: rgba(124, 58, 237, 0.08);
 }
 
+/* Legacy variable aliases for migration (map old names to canonical tokens) */
+:root,
+.light {
+  --accent: var(--color-accent);
+  --accent-bg: var(--color-accent-soft);
+  --accent-border: var(--color-accent-muted);
+  --text-h: var(--color-fg);
+  --border: var(--color-border);
+  --social-bg: var(--color-surface);
+  --shadow: var(--shadow-card);
+}
+
 .dark {
   --color-bg: #0f0f14;
   --color-bg-subtle: #16161f;
@@ -48,6 +60,17 @@
   --gradient-text: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #c4b5fd 100%);
   --orb-1: rgba(129, 140, 248, 0.15);
   --orb-2: rgba(167, 139, 250, 0.1);
+}
+
+/* Legacy aliases for dark theme */
+.dark {
+  --accent: var(--color-accent);
+  --accent-bg: var(--color-accent-soft);
+  --accent-border: var(--color-accent-muted);
+  --text-h: var(--color-fg);
+  --border: var(--color-border);
+  --social-bg: var(--color-surface);
+  --shadow: var(--shadow-card);
 }
 
 * {
@@ -203,7 +226,6 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  font-family: 'DM Sans', sans-serif;
   font-size: 0.9375rem;
   font-weight: 600;
   color: #fff;
@@ -293,7 +315,6 @@ body {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 9999px;
-  font-family: 'DM Sans', sans-serif;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--color-fg);

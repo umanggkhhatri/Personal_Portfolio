@@ -18,8 +18,7 @@ export default function ThemeToggle({ className = '' }) {
           ☾
         </span>
         <span
-          className="theme-toggle-thumb"
-          style={{ transform: theme === 'dark' ? 'translateX(100%)' : 'translateX(0)' }}
+          className={`theme-toggle-thumb ${theme === 'dark' ? 'translate-x-full' : 'translate-x-0'}`}
         />
       </span>
     </button>
