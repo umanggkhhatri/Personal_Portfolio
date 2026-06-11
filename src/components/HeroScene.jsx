@@ -1,5 +1,6 @@
 import { useRef, useMemo } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Suspense } from 'react'
 import {
   MeshTransmissionMaterial,
   Float,
@@ -167,7 +168,9 @@ export default function HeroScene({ scrollY }) {
       gl={{ preserveDrawingBuffer: true, antialias: true, alpha: true }}
       style={{ background: 'transparent' }}
     >
-      <SceneContent scrollY={scrollY} />
+      <Suspense fallback={null}>
+        <SceneContent scrollY={scrollY} />
+      </Suspense>
     </Canvas>
   )
 }
