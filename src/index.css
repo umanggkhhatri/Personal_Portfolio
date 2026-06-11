@@ -22,7 +22,7 @@
   --shadow-glow: 0 0 60px rgba(193, 122, 46, 0.20);
   --gradient-hero: radial-gradient(ellipse 80% 60% at 70% 20%, rgba(193, 122, 46, 0.14), transparent 60%),
     radial-gradient(ellipse 60% 50% at 20% 80%, rgba(139, 69, 19, 0.10), transparent 50%);
-  --gradient-text: linear-gradient(135deg, #c17a2e 0%, #8b4513 50%, #a0522d 100%);
+  --gradient-text: linear-gradient(135deg, #c17a2e 0%, #875f42 50%, #a0522d 100%);
   --orb-1: rgba(193, 122, 46, 0.14);
   --orb-2: rgba(139, 69, 19, 0.10);
 }
@@ -94,9 +94,11 @@ body {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-bg-subtle);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-accent-muted);
   border-radius: 3px;
@@ -145,14 +147,12 @@ body {
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-border),
-    var(--color-accent-soft),
-    var(--color-border),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      var(--color-border),
+      var(--color-accent-soft),
+      var(--color-border),
+      transparent);
 }
 
 /* ─── Typography ──────────────────────────────────── */
@@ -390,6 +390,7 @@ body {
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -397,10 +398,12 @@ body {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -414,6 +417,7 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
