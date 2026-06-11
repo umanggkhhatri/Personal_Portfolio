@@ -5,26 +5,26 @@
 /* ─── Design tokens ───────────────────────────────── */
 :root,
 .light {
-  --color-bg: #f8f7f4;
-  --color-bg-subtle: #f0efe9;
-  --color-surface: #ffffff;
-  --color-surface-elevated: #ffffff;
-  --color-fg: #1a1a2e;
-  --color-muted: #5c5c6f;
-  --color-border: rgba(26, 26, 46, 0.08);
-  --color-accent: #4f46e5;
-  --color-accent-secondary: #7c3aed;
-  --color-accent-soft: rgba(79, 70, 229, 0.1);
-  --color-accent-muted: rgba(79, 70, 229, 0.65);
-  --color-success: #059669;
-  --shadow-card: 0 1px 3px rgba(26, 26, 46, 0.06), 0 8px 24px rgba(26, 26, 46, 0.04);
-  --shadow-card-hover: 0 4px 12px rgba(26, 26, 46, 0.08), 0 20px 48px rgba(79, 70, 229, 0.12);
-  --shadow-glow: 0 0 60px rgba(79, 70, 229, 0.15);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 70% 20%, rgba(79, 70, 229, 0.12), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(124, 58, 237, 0.08), transparent 50%);
-  --gradient-text: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
-  --orb-1: rgba(79, 70, 229, 0.12);
-  --orb-2: rgba(124, 58, 237, 0.08);
+  --color-bg: #f1e5cc;
+  --color-bg-subtle: #e8d9b8;
+  --color-surface: #faf3e4;
+  --color-surface-elevated: #fff8ee;
+  --color-fg: #2c1f14;
+  --color-muted: #6b5340;
+  --color-border: rgba(44, 31, 20, 0.12);
+  --color-accent: #c17a2e;
+  --color-accent-secondary: #8b4513;
+  --color-accent-soft: rgba(193, 122, 46, 0.12);
+  --color-accent-muted: rgba(193, 122, 46, 0.65);
+  --color-success: #5a8a3c;
+  --shadow-card: 0 1px 3px rgba(44, 31, 20, 0.08), 0 8px 24px rgba(44, 31, 20, 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(44, 31, 20, 0.10), 0 20px 48px rgba(193, 122, 46, 0.14);
+  --shadow-glow: 0 0 60px rgba(193, 122, 46, 0.20);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 70% 20%, rgba(193, 122, 46, 0.14), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(139, 69, 19, 0.10), transparent 50%);
+  --gradient-text: linear-gradient(135deg, #c17a2e 0%, #8b4513 50%, #a0522d 100%);
+  --orb-1: rgba(193, 122, 46, 0.14);
+  --orb-2: rgba(139, 69, 19, 0.10);
 }
 
 /* Legacy variable aliases for migration (map old names to canonical tokens) */
@@ -40,26 +40,26 @@
 }
 
 .dark {
-  --color-bg: #0f0f14;
-  --color-bg-subtle: #16161f;
-  --color-surface: #1a1a24;
-  --color-surface-elevated: #22222e;
-  --color-fg: #f4f4f5;
-  --color-muted: #a1a1aa;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-accent: #818cf8;
-  --color-accent-secondary: #a78bfa;
-  --color-accent-soft: rgba(129, 140, 248, 0.12);
-  --color-accent-muted: rgba(129, 140, 248, 0.75);
-  --color-success: #34d399;
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2);
-  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.35), 0 24px 56px rgba(129, 140, 248, 0.15);
-  --shadow-glow: 0 0 80px rgba(129, 140, 248, 0.2);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 70% 20%, rgba(129, 140, 248, 0.15), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(167, 139, 250, 0.1), transparent 50%);
-  --gradient-text: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #c4b5fd 100%);
-  --orb-1: rgba(129, 140, 248, 0.15);
-  --orb-2: rgba(167, 139, 250, 0.1);
+  --color-bg: #1c1914;
+  --color-bg-subtle: #231e18;
+  --color-surface: #2a2419;
+  --color-surface-elevated: #332c20;
+  --color-fg: #f1e5cc;
+  --color-muted: #a89070;
+  --color-border: rgba(241, 229, 204, 0.10);
+  --color-accent: #d4944a;
+  --color-accent-secondary: #c17a2e;
+  --color-accent-soft: rgba(212, 148, 74, 0.14);
+  --color-accent-muted: rgba(212, 148, 74, 0.70);
+  --color-success: #6aad44;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.40), 0 24px 56px rgba(212, 148, 74, 0.18);
+  --shadow-glow: 0 0 80px rgba(212, 148, 74, 0.22);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 70% 20%, rgba(212, 148, 74, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(193, 122, 46, 0.12), transparent 50%);
+  --gradient-text: linear-gradient(135deg, #d4944a 0%, #c17a2e 50%, #e0aa6e 100%);
+  --orb-1: rgba(212, 148, 74, 0.18);
+  --orb-2: rgba(193, 122, 46, 0.12);
 }
 
 /* Legacy aliases for dark theme */
@@ -164,12 +164,12 @@ body {
 }
 
 .section-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-accent);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .text-accent {
@@ -426,7 +426,16 @@ body {
 }
 
 .font-brutal {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Pixelify Sans', monospace;
+}
+
+/* ─── Pixel font utilities ────────────────────────── */
+.font-pixel {
+  font-family: 'VT323', monospace;
+}
+
+.font-pixel-display {
+  font-family: 'Pixelify Sans', monospace;
 }
 
 @media (max-width: 768px) {

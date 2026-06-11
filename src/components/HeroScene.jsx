@@ -14,10 +14,10 @@ function useSceneColors() {
   const { isDark } = useTheme()
   return useMemo(
     () => ({
-      primary: isDark ? '#818cf8' : '#6366f1',
-      secondary: isDark ? '#c084fc' : '#a78bfa',
-      glass: isDark ? '#1e1e2e' : '#f8fafc',
-      env: isDark ? 'night' : 'city',
+      primary: isDark ? '#d4944a' : '#c17a2e',
+      secondary: isDark ? '#e0aa6e' : '#8b4513',
+      glass: isDark ? '#2a2419' : '#faf3e4',
+      env: isDark ? 'sunset' : 'dawn',
     }),
     [isDark],
   )

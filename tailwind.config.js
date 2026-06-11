@@ -14,11 +14,20 @@ export default {
         'surface-elevated': 'var(--color-surface-elevated)',
         border: 'var(--color-border)',
         'accent-secondary': 'var(--color-accent-secondary)',
+        // Warm parchment palette (direct access)
+        parchment: '#f1e5cc',
+        espresso: '#2c1f14',
+        charcoal: '#1c1914',
+        'warm-amber': '#c17a2e',
+        'warm-sienna': '#8b4513',
+        'warm-rust': '#a0522d',
       },
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'serif'],
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
         mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
+        pixel: ['"VT323"', 'monospace'],
+        'pixel-display': ['"Pixelify Sans"', 'monospace'],
       },
       boxShadow: {
         card: 'var(--shadow-card)',

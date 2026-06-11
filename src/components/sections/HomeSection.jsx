@@ -30,7 +30,7 @@ export default function HomeSection({ scrollY }) {
               </span>
             </div>
 
-            <h1 className="font-display font-semibold leading-[1.05] mb-6 text-foreground">
+            <h1 className="font-pixel-display font-semibold leading-[1.05] mb-6 text-foreground">
               <span className="block text-[clamp(2.5rem,6vw,4.5rem)]">{home.headline[0]}</span>
               <span className="block text-[clamp(2.5rem,6vw,4.5rem)] gradient-text">
                 {home.headline[1]}
@@ -92,7 +92,7 @@ export default function HomeSection({ scrollY }) {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div>
             <p className="section-label mb-4">{home.about.label}</p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6 leading-tight">
+            <h2 className="font-pixel-display text-3xl md:text-4xl font-semibold text-foreground mb-6 leading-tight">
               {home.about.title[0]}
               <br />
               <span className="gradient-text">{home.about.title[1]}</span>

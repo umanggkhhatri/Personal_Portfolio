@@ -28,7 +28,7 @@ export default function ContactTerminal() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <p className="section-label mb-4">{contact.label}</p>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground">
+          <h2 className="font-pixel-display text-4xl md:text-5xl font-semibold text-foreground">
             {contact.headline[0]}{' '}
             <span className="gradient-text">{contact.headline[1]}</span>
           </h2>
@@ -47,7 +47,7 @@ export default function ContactTerminal() {
               <div className="grid md:grid-cols-3 gap-5">
                 {contact.form.fields.map(field => (
                   <div key={field.id} className="flex flex-col gap-2">
-                    <label className="font-mono text-xs text-muted uppercase tracking-wide" htmlFor={field.id}>
+                    <label className="font-pixel text-sm text-muted uppercase tracking-wide" htmlFor={field.id}>
                       {field.label}
                     </label>
                     <input
@@ -65,7 +65,7 @@ export default function ContactTerminal() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-mono text-xs text-muted uppercase tracking-wide" htmlFor="message">
+                <label className="font-pixel text-sm text-muted uppercase tracking-wide" htmlFor="message">
                   message
                 </label>
                 <textarea
@@ -89,7 +89,7 @@ export default function ContactTerminal() {
           ) : (
             <div className="py-12 text-center">
               <div className="text-4xl mb-4 text-accent">✓</div>
-              <h3 className="font-display text-2xl font-semibold text-foreground mb-2">Message sent</h3>
+              <h3 className="font-pixel-display text-2xl font-semibold text-foreground mb-2">Message sent</h3>
               <p className="font-sans text-muted">{contact.successMessage}</p>
             </div>
           )}

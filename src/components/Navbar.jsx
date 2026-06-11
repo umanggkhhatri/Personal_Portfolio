@@ -38,7 +38,7 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between px-6 md:px-12 py-4 max-w-7xl mx-auto">
         <a href="#home" className="flex items-center gap-3 group" onClick={closeMenu}>
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-semibold font-display bg-accent-soft text-accent border border-border group-hover:shadow-glow transition-shadow">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-semibold font-pixel-display bg-accent-soft text-accent border border-border group-hover:shadow-glow transition-shadow">
             {site.initials}
           </div>
           <span className="font-sans text-sm font-medium text-muted hidden sm:block">
@@ -51,7 +51,7 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="font-sans text-sm px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-accent-soft transition-all"
+              className="font-pixel-display text-base px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-accent-soft transition-all tracking-wide"
             >
               {item.label}
             </a>
@@ -83,7 +83,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className="font-sans text-base px-4 py-3 rounded-lg text-muted hover:text-foreground hover:bg-accent-soft transition-all"
+                className="font-pixel-display text-lg px-4 py-3 rounded-lg text-muted hover:text-foreground hover:bg-accent-soft transition-all tracking-wide"
               >
                 {item.label}
               </a>

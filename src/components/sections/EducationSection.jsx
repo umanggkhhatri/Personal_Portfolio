@@ -9,7 +9,7 @@ export default function EducationSection() {
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="section-divider mb-16 max-w-md" />
         <p className="section-label mb-4">{education.label}</p>
-        <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground mb-3">
+        <h2 className="font-pixel-display text-4xl md:text-5xl font-semibold text-foreground mb-3">
           {education.title}
         </h2>
         <p className="font-sans text-base text-muted mb-12 max-w-xl">{education.subtitle}</p>
@@ -19,7 +19,7 @@ export default function EducationSection() {
             <article key={`${entry.institution}-${index}`} className="surface-card rounded-2xl p-8 md:p-10">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                 <div>
-                  <h3 className="font-display text-2xl font-semibold text-foreground">
+                  <h3 className="font-pixel-display text-2xl font-semibold text-foreground">
                     {entry.institution}
                   </h3>
                   <p className="font-sans text-sm text-accent font-medium mt-1">{entry.degree}</p>

@@ -3,16 +3,23 @@ import projectsData from '../data/projects.json'
 
 /* ─── Badge ──────────────────────────────────────────────── */
 const BADGE_CLASSES = {
-  cyan:   'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20',
-  violet: 'bg-violet-500/10 text-violet-400 border border-violet-500/20',
-  green:  'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
+  cyan:   'border',
+  violet: 'border',
+  green:  'border',
+}
+
+const BADGE_STYLES = {
+  cyan:   { background: 'var(--color-accent-soft)', color: 'var(--color-accent)', borderColor: 'var(--color-accent-muted)' },
+  violet: { background: 'var(--color-accent-soft)', color: 'var(--color-accent)', borderColor: 'var(--color-accent-muted)' },
+  green:  { background: 'var(--color-accent-soft)', color: 'var(--color-accent)', borderColor: 'var(--color-accent-muted)' },
 }
 
 function ProjectBadge({ badge }) {
   if (!badge) return null
   const cls = BADGE_CLASSES[badge.variant] || BADGE_CLASSES.cyan
+  const sty = BADGE_STYLES[badge.variant] || BADGE_STYLES.cyan
   return (
-    <span className={`font-mono text-xs px-3 py-1 rounded-full ${cls}`}>
+    <span className={`font-mono text-xs px-3 py-1 rounded-full ${cls}`} style={sty}>
       {badge.text}
     </span>
   )
@@ -38,7 +45,10 @@ function ProjectLinks({ links }) {
           href={links.repo}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 font-mono text-xs px-5 py-2.5 rounded-lg border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all duration-200"
+          className="inline-flex items-center gap-2 font-mono text-xs px-5 py-2.5 rounded-lg border transition-all duration-200"
+          style={{ borderColor: 'var(--color-border)', color: 'var(--color-muted)' }}
+          onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-fg)'; e.currentTarget.style.borderColor = 'var(--color-accent-muted)' }}
+          onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-muted)'; e.currentTarget.style.borderColor = 'var(--color-border)' }}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
             <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"/>
@@ -56,14 +66,14 @@ function FeaturedCard({ project }) {
 
   return (
     <div className="neumorphic-card rounded-2xl overflow-hidden group relative h-full flex flex-col">
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-violet-500/5 pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, var(--color-accent-soft), transparent, var(--color-accent-soft))' }} />
 
       <div className="relative p-8 flex flex-col h-full">
         {/* Header */}
         <div className="flex items-start justify-between mb-5">
           <div>
             <span className="section-label block mb-2">{project.label}</span>
-            <h3 className="font-brutal text-3xl font-bold text-white leading-tight">
+            <h3 className="font-brutal text-3xl font-bold leading-tight" style={{ color: 'var(--color-fg)' }}>
               {titleLines[0]}
               {titleLines[1] && (
                 <>
@@ -76,7 +86,7 @@ function FeaturedCard({ project }) {
           <div className="flex flex-col items-end gap-2">
             <div
               className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"
-              style={{ background: 'rgba(0,245,255,0.08)', border: '1px solid rgba(0,245,255,0.15)' }}
+              style={{ background: 'var(--color-accent-soft)', border: '1px solid var(--color-accent-muted)' }}
             >
               {project.icon}
             </div>
@@ -85,7 +95,7 @@ function FeaturedCard({ project }) {
         </div>
 
         {/* Description */}
-        <p className="text-white/55 font-mono text-sm leading-relaxed mb-5">
+        <p className="font-mono text-sm leading-relaxed mb-5" style={{ color: 'var(--color-muted)' }}>
           {project.description}
         </p>
 
@@ -93,7 +103,7 @@ function FeaturedCard({ project }) {
         {project.highlight && (
           <div
             className="rounded-xl px-4 py-3 mb-5 font-mono text-xs"
-            style={{ background: 'rgba(0,245,255,0.04)', border: '1px solid rgba(0,245,255,0.1)', color: '#00f5ff' }}
+            style={{ background: 'var(--color-accent-soft)', border: '1px solid var(--color-accent-muted)', color: 'var(--color-accent)' }}
           >
             💡 {project.highlight}
           </div>
@@ -106,10 +116,10 @@ function FeaturedCard({ project }) {
               <div
                 key={s.label}
                 className="rounded-xl p-3 text-center"
-                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
+                style={{ background: 'var(--color-bg-subtle)', border: '1px solid var(--color-border)' }}
               >
                 <div className="font-mono text-lg font-bold text-cyan-glow">{s.value}</div>
-                <div className="font-mono text-xs text-white/30">{s.label}</div>
+                <div className="font-mono text-xs" style={{ color: 'var(--color-muted)' }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -122,9 +132,9 @@ function FeaturedCard({ project }) {
               key={t}
               className="font-mono text-xs px-2.5 py-1 rounded-full"
               style={{
-                background: 'rgba(0,245,255,0.06)',
-                border: '1px solid rgba(0,245,255,0.12)',
-                color: '#00f5ff',
+                background: 'var(--color-accent-soft)',
+                border: '1px solid var(--color-accent-muted)',
+                color: 'var(--color-accent)',
               }}
             >
               {t}
@@ -148,7 +158,7 @@ function TerminalCard({ project }) {
         <div className="terminal-dot bg-red-500" />
         <div className="terminal-dot bg-yellow-500" />
         <div className="terminal-dot bg-green-500" />
-        <span className="font-mono text-xs text-white/30 ml-2">{terminal.filename}</span>
+        <span className="font-mono text-xs ml-2" style={{ color: 'var(--color-muted)' }}>{terminal.filename}</span>
         <div className="ml-auto flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <span className="font-mono text-xs text-green-400">{terminal.status}</span>
@@ -164,7 +174,7 @@ function TerminalCard({ project }) {
             style={{ animation: `fadeInUp 0.4s ease forwards ${i * 0.1}s` }}
           >
             <span style={{ color: line.color, minWidth: '14px', flexShrink: 0 }}>{line.prefix}</span>
-            <span className="text-white/70 group-hover:text-white/90 transition-colors truncate">
+            <span className="transition-colors truncate" style={{ color: 'var(--color-muted)' }}>
               {line.text}
             </span>
           </div>
@@ -180,20 +190,20 @@ function TerminalCard({ project }) {
         {terminal.stats.map(stat => (
           <div key={stat.label} className="text-center">
             <div className="font-mono text-base font-bold text-cyan-glow">{stat.value}</div>
-            <div className="font-mono text-xs text-white/30">{stat.label}</div>
+            <div className="font-mono text-xs" style={{ color: 'var(--color-muted)' }}>{stat.label}</div>
           </div>
         ))}
       </div>
 
       {/* Description + tags + links */}
       <div className="px-5 pb-5 flex flex-col gap-3 flex-shrink-0">
-        <p className="text-white/45 font-mono text-xs leading-relaxed">{project.description}</p>
+        <p className="font-mono text-xs leading-relaxed" style={{ color: 'var(--color-muted)' }}>{project.description}</p>
         <div className="flex flex-wrap gap-1.5">
           {project.tags.map(t => (
             <span
               key={t}
               className="font-mono text-xs px-2 py-0.5 rounded-full"
-              style={{ background: 'rgba(0,245,255,0.06)', border: '1px solid rgba(0,245,255,0.1)', color: '#00f5ff' }}
+              style={{ background: 'var(--color-accent-soft)', border: '1px solid var(--color-accent-muted)', color: 'var(--color-accent)' }}
             >
               {t}
             </span>
@@ -213,19 +223,19 @@ function PlatformCard({ project }) {
   return (
     <div
       className="glass rounded-2xl overflow-hidden group relative h-full flex flex-col"
-      style={{ border: '1px solid rgba(0,245,255,0.08)' }}
+      style={{ border: '1px solid var(--color-border)' }}
     >
       {/* Header */}
       <div className="flex items-center gap-4 p-5 border-b border-white/5 flex-shrink-0">
         <div
           className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-          style={{ background: 'rgba(0,245,255,0.1)', border: '1px solid rgba(0,245,255,0.2)' }}
+          style={{ background: 'var(--color-accent-soft)', border: '1px solid var(--color-accent-muted)' }}
         >
           {platform.icon}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-brutal text-base font-semibold text-white">{platform.name}</div>
-          <div className="font-mono text-xs text-white/40 truncate">{platform.subtitle}</div>
+          <div className="font-brutal text-base font-semibold" style={{ color: 'var(--color-fg)' }}>{platform.name}</div>
+          <div className="font-mono text-xs truncate" style={{ color: 'var(--color-muted)' }}>{platform.subtitle}</div>
         </div>
         <ProjectBadge badge={project.badge} />
       </div>
@@ -237,11 +247,11 @@ function PlatformCard({ project }) {
             key={role}
             type="button"
             onClick={() => setActiveRole(i)}
-            className={`font-mono text-xs px-3 py-1.5 rounded-lg transition-all duration-200 ${
-              activeRole === i
-                ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/25'
-                : 'bg-white/3 text-white/40 border border-white/8 hover:text-white/60'
-            }`}
+            className="font-mono text-xs px-3 py-1.5 rounded-lg transition-all duration-200 border"
+            style={activeRole === i
+              ? { background: 'var(--color-accent-soft)', color: 'var(--color-accent)', borderColor: 'var(--color-accent-muted)' }
+              : { background: 'var(--color-bg-subtle)', color: 'var(--color-muted)', borderColor: 'var(--color-border)' }
+            }
           >
             {role}
           </button>
@@ -254,17 +264,17 @@ function PlatformCard({ project }) {
           <div
             key={f.label}
             className="rounded-xl p-3 flex items-center gap-3 transition-all duration-200 group/feat hover:scale-[1.02]"
-            style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
+            style={{ background: 'var(--color-bg-subtle)', border: '1px solid var(--color-border)' }}
           >
             <span className="text-lg">{f.icon}</span>
-            <span className="font-mono text-xs text-white/60">{f.label}</span>
+            <span className="font-mono text-xs" style={{ color: 'var(--color-muted)' }}>{f.label}</span>
           </div>
         ))}
       </div>
 
       {/* Description */}
       <div className="px-5 pb-2">
-        <p className="text-white/45 font-mono text-xs leading-relaxed">{project.description}</p>
+        <p className="font-mono text-xs leading-relaxed" style={{ color: 'var(--color-muted)' }}>{project.description}</p>
       </div>
 
       {/* Tags */}
@@ -273,7 +283,7 @@ function PlatformCard({ project }) {
           <span
             key={t}
             className="font-mono text-xs px-2 py-0.5 rounded-full"
-            style={{ background: 'rgba(191,95,255,0.06)', border: '1px solid rgba(191,95,255,0.12)', color: '#bf5fff' }}
+            style={{ background: 'var(--color-accent-soft)', border: '1px solid var(--color-accent-muted)', color: 'var(--color-accent)' }}
           >
             {t}
           </span>
@@ -307,7 +317,7 @@ export default function ProjectsShowcase() {
       <div className="mb-16">
         <p className="section-label mb-4">{label}</p>
         <div className="flex items-end justify-between flex-wrap gap-4">
-          <h2 className="font-display text-4xl md:text-6xl font-semibold leading-tight">
+          <h2 className="font-pixel-display text-4xl md:text-6xl font-semibold leading-tight">
             <span className="text-foreground">{title[0]}</span>
             <br />
             <span className="gradient-text">{title[1]}</span>
@@ -338,7 +348,7 @@ export default function ProjectsShowcase() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <span className="section-label block mb-1">{project.label}</span>
-                    <h3 className="font-display text-xl font-semibold text-foreground">
+                    <h3 className="font-pixel-display text-xl font-semibold text-foreground">
                       {Array.isArray(project.title) ? project.title.join(' ') : project.title}
                     </h3>
                   </div>

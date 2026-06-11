@@ -36,7 +36,7 @@ export default function SkillsSection() {
     <section id="skills" className="relative py-28 overflow-hidden">
       <div className="text-center mb-14 px-6">
         <p className="section-label mb-4">{skillsData.label}</p>
-        <h2 className="font-display text-4xl md:text-5xl font-semibold gradient-text">
+        <h2 className="font-pixel-display text-4xl md:text-5xl font-semibold gradient-text">
           {skillsData.title}
         </h2>
         <p className="font-sans text-base text-muted mt-3">{skillsData.subtitle}</p>
@@ -51,7 +51,7 @@ export default function SkillsSection() {
 
       <div id="coursework" className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
         <p className="section-label mb-4">{courseworkData.label}</p>
-        <h3 className="font-display text-2xl font-semibold text-foreground mb-8">
+        <h3 className="font-pixel-display text-2xl font-semibold text-foreground mb-8">
           {courseworkData.title}
         </h3>
         <div className="grid sm:grid-cols-2 gap-5">
@@ -60,7 +60,7 @@ export default function SkillsSection() {
               <div className="flex items-start justify-between gap-4 mb-3">
                 <div>
                   <span className="font-mono text-xs text-accent">{course.code}</span>
-                  <h4 className="font-display text-lg font-semibold text-foreground mt-1">{course.name}</h4>
+                  <h4 className="font-pixel-display text-lg font-semibold text-foreground mt-1">{course.name}</h4>
                 </div>
                 {course.grade && (
                   <span className="font-mono text-xs px-2.5 py-1 rounded-full bg-accent-soft text-accent border border-border shrink-0">
